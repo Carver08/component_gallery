@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+</head>
+<body>
+<form class="form" action="/loginP" method="post" onsubmit="return empty(this)">
+    账号：<input type="text" id="name" name="username" placeholder="账号"> <br>
+    密码：<input type="password" id="password" name="password" placeholder="密码"> <br>
+    <input type="submit" id="login" value="登录"/>
+    <!--<label class="short">验证码：</label>-->
+    <!--<span class="field">-->
+        <!--<input class="ui-text short" type="text" name="verify_code" maxlength="4">-->
+        <!--<span class="error" style="display: inline;"></span>-->
+    <!--</span>-->
+    <!--<span class="field vcode" data-type="vcode">-->
+         <!--<img width="120" id="verify_code_img" height="32" src="/getImg" onclick="javascript:changeImg()">-->
+         <!--<a href="#" class="doc-color-link desc" onclick="javascript:changeImg()">看不清，换一个？</a>-->
+    <!--</span>-->
+
+</form>
+没有账号，去<a th:href="register">注册</a>
+<!--<div class="field-wrap" data-field="mobile" style="position:relative;z-index:100;">-->
+
+</div>
+<!-- 触发JS刷新  切换图片-->
+<script type="text/javascript">
+    //图形验证码
+    // function changeImg(){
+    //     var img = document.getElementById("verify_code_img");
+    //     img.src = "/getImg?date=" + new Date();
+    // }
+
+    function empty (from) {
+        for(i=0;i<from.length;i++){
+            if(from.elements[i].value == ""){
+                alert(from.elements[i].placeholder + "不能为空！");
+                from.elements[i].focus();
+                return false;
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

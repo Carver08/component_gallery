@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<form class="form" action = "/regisZC" method="post" onsubmit="return empty(this)">
+    账号：<input type="text" id="name" name = "username" placeholder="账号" /> <br>
+    密码：<input type="password" id = "password" name = "password" placeholder="密码" /> <br>
+    邮箱：<input type="email" id="email" name="mail" placeholder="邮箱"/> <br>
+    <input type="submit" id = "login" value = "注册">
+</form>
+已有账号，去<a th:href="regisLogin">登录</a>
+<!--<div id="model2">-->
+    <!--<div class="layui-form-item input-item">-->
+        <!--<label for="userName">手机号</label>-->
+        <!--<input type="text" placeholder="请输入手机号" autocomplete="off" id="memPhone" name="memPhone" class="layui-input">-->
+    <!--</div>-->
+    <!--<div class="layui-form-item input-item">-->
+        <!--<label for="userName">验证码</label>-->
+        <!--<input type="text" placeholder="请输入验证码" autocomplete="off" id="code" name="code" maxlength="6" class="layui-input" style="width: 50%;display: inline">-->
+        <!--<input type="button" class="layui-btn layui-btn-primary" value="获取验证码" id="sendBtn" style="width:41%;margin-left: 18px;border-color:#1e9fff !important;" onclick="sendCode(this)"></input>-->
+    <!--</div>-->
+<!--</div>-->
+<script type="text/javascript">
+    function empty (from) {
+        for(i=0;i<from.length;i++){
+            if(from.elements[i].value == ""){
+                alert(from.elements[i].placeholder + "不能为空！");
+                from.elements[i].focus();
+                return false;
+            }
+        }
+    }
+</script>
+</body>
+</html>

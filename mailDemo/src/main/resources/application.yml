@@ -1,0 +1,23 @@
+server:
+  port: 8085
+
+spring:
+  ##数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/mail_demo?characterEncoding=utf8&amp&serverTimezone=UTC
+  ##邮箱服务器
+  mail:
+    host: smtp.qq.com
+    username: 1432428154@qq.com
+    #密码为SMTP服务授权码
+    password: wrtjwqxzpvoticcc
+    default-encoding: UTF-8
+    #发送邮件地址
+    from: 1432428154@qq.com
+
+mybatis:
+  mapper-locations: classpath*:mapper/DaoMapper.xml
+  type-aliases-package: mapper*

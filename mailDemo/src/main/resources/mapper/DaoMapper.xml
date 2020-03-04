@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.login.dao.UserDao">
+    <!--登录-->
+    <select id="findByName" parameterType="String" resultType="com.login.entity.LoginUser">
+        select * from `login` where `username`=#{username} and `password`= #{password} AND `status`=1
+    </select>
+    <!--注册-->
+    <insert id="findRegis" parameterType="String">
+        <!--INSERT INTO `login` VALUE (#{username},#{password},#{xcs},#{status},#{code})-->
+        INSERT INTO `login` (`id`,`username`,`password`,`mail`,`status`,`code`) VALUE (#{id,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{mail,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR})
+    </insert>
+
+    <!--根据激活码code查询用户-->
+    <select id="checkCode" parameterType="String" resultType="com.login.entity.LoginUser">
+        SELECT * FROM `login` WHERE CODE = #{code}
+    </select>
+
+    <!--激活账户，修改账户状态-->
+    <update id="updateActivateStatus" parameterType="com.login.entity.LoginUser">
+        UPDATE `login` SET `status`=1,code=null WHERE `id` = #{id}
+    </update>
+
+    <!--登录，根据状态查询-->
+    <!--<select id="loginUser" resultType="com.login.entity.LoginUser">-->
+        <!--SELECT * FROM `login` WHERE `username`=#{username} AND `password`=#{password} -->
+    <!--</select>-->
+</mapper>
